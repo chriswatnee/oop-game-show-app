@@ -18,4 +18,9 @@ class Phrase {
     // Update phrase unordered list HTML
     phraseUl.innerHTML = phraseHtml;
   }
+
+  // Checks to see if the letter matches a letter in the phrase
+  checkLetter(letter) {
+    return this.phrase.includes(letter);
+  }
 }
