@@ -31,7 +31,8 @@ class Phrase {
     const letterLis = phraseUl.querySelectorAll(`.${letter}`);
     // Update CSS class names
     letterLis.forEach((letterLi) => {
-      letterLi.classList.remove("hide").add("show");
+      letterLi.classList.remove("hide");
+      letterLi.classList.add("show");
     });
   }
 }

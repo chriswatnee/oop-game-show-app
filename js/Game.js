@@ -54,9 +54,17 @@ class Game {
 
   // Removes a life from the scoreboard
   removeLife() {
-    // Replace one of the liveHeart.png images with a lostHeart.png image
-    const heartImg = document.querySelector(".tries:last-child img");
-    heartImg.src = "images/lostHeart.png";
+    const heartImgs = document.querySelectorAll(".tries img");
+    // Loop through heartImgs backwards
+    for (let i = heartImgs.length - 1; i >= 0; i--) {
+      const heartImg = heartImgs[i];
+      // If heartImg's src is liveHeart.png 
+      if (heartImg.getAttribute("src") === "images/liveHeart.png") {
+        // Replace src with lostHeart.png
+        heartImg.src = "images/lostHeart.png";
+        break;
+      }
+    }
     // Increment the missed property
     this.missed++;
     // If the player has five missed guesses then end the game
@@ -82,7 +90,7 @@ class Game {
     overlayDiv.style.display = "flex";
     overlayDiv.classList.remove("start");
     // Update the overlay h1 element with a win or loss message and adds a win/lose class to the overlay
-    if (checkForWin()) {
+    if (this.checkForWin()) {
       gameOverMessageH1.textContent = "Congratulations, you won!";
       overlayDiv.classList.add("win");
     } else {
