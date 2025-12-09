@@ -100,7 +100,7 @@ class Game {
       gameOverMessageH1.textContent = `Congratulations, you won! The phrase was "${this.activePhrase.phrase}".`;
       overlayDiv.classList.add("win");
     } else {
-      gameOverMessageH1.textContent = "Better luck next time!";
+      gameOverMessageH1.textContent = "Sorry, you lost. Better luck next time!";
       overlayDiv.classList.add("lose");
     }
     // Reset the game
