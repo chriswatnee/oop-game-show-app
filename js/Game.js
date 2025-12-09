@@ -24,4 +24,10 @@ class Game {
     // Add that phrase to the board
     this.activePhrase.addPhraseToDisplay();
   }
+
+  // Retrieves one of the phrases stored in the phrases array and returns it
+  getRandomPhrase() {
+    const randomIndex = Math.floor(Math.random() * this.phrases.length);
+    return this.phrases[randomIndex];
+  }
 }
