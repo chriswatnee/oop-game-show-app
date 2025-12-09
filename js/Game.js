@@ -97,7 +97,7 @@ class Game {
     overlayDiv.classList.remove("start");
     // Update the overlay h1 element with a win or loss message and adds a win/lose class to the overlay
     if (this.checkForWin()) {
-      gameOverMessageH1.textContent = "Congratulations, you won!";
+      gameOverMessageH1.textContent = `Congratulations, you won! The phrase was "${this.activePhrase.phrase}".`;
       overlayDiv.classList.add("win");
     } else {
       gameOverMessageH1.textContent = "Better luck next time!";
