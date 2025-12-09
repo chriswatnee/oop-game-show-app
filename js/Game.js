@@ -51,4 +51,17 @@ class Game {
       this.removeLife();
     }
   }
+
+  // Removes a life from the scoreboard
+  removeLife() {
+    // Replace one of the liveHeart.png images with a lostHeart.png image
+    const heartImg = document.querySelector(".tries:last-child img");
+    heartImg.src = "images/lostHeart.png";
+    // Increment the missed property
+    this.missed++;
+    // If the player has five missed guesses then end the game
+    if (this.missed === 5) {
+      this.gameOver();
+    }
+  }
 }
