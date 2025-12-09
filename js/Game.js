@@ -19,6 +19,9 @@ class Game {
     // Hide the start screen overlay
     const overlayDiv = document.querySelector("#overlay");
     overlayDiv.style.display = "none";
+    // Remove the win or lose CSS classes from overlay
+    overlayDiv.classList.remove("win");
+    overlayDiv.classList.remove("lose");
     // Get random phrase and set the activePhrase property with the phrase
     this.activePhrase = this.getRandomPhrase();
     // Add that phrase to the board
@@ -86,6 +89,9 @@ class Game {
     // DOM element selections
     const overlayDiv = document.querySelector("#overlay");
     const gameOverMessageH1 = document.querySelector("#game-over-message");
+    const phraseUl = document.querySelector("#phrase ul");
+    const keyBtns = document.querySelectorAll(".key");
+    const heartImgs = document.querySelectorAll(".tries img");
     // Display the start screen overlay and remove start class
     overlayDiv.style.display = "flex";
     overlayDiv.classList.remove("start");
@@ -97,5 +103,16 @@ class Game {
       gameOverMessageH1.textContent = "Better luck next time!";
       overlayDiv.classList.add("lose");
     }
+    // Reset the game
+    // Remove all li elements from the Phrase ul element
+    phraseUl.innerHTML = "";
+    // Enable all of the onscreen keyboard buttons and remove the chosen or wrong CSS classes
+    keyBtns.forEach((keyBtn) => {
+      keyBtn.disabled = false;
+      keyBtn.classList.remove("chosen");
+      keyBtn.classList.remove("wrong");
+    });
+    // Reset all of the heart images in the scoreboard
+    heartImgs.forEach((heartImg) => heartImg.src = "images/liveHeart.png");
   }
 }
