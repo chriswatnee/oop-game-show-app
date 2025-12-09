@@ -13,4 +13,15 @@ class Game {
     ];
     this.activePhrase = null;
   }
+
+  // Starts the game
+  startGame() {
+    // Hide the start screen overlay
+    const overlayDiv = document.querySelector("#overlay");
+    overlayDiv.style.display = "none";
+    // Get random phrase and set the activePhrase property with the phrase
+    this.activePhrase = getRandomPhrase();
+    // Add that phrase to the board
+    this.activePhrase.addPhraseToDisplay();
+  }
 }
