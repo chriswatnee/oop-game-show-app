@@ -30,4 +30,25 @@ class Game {
     const randomIndex = Math.floor(Math.random() * this.phrases.length);
     return this.phrases[randomIndex];
   }
+
+  // Controls most of the game logic
+  handleInteraction(btnClicked) {
+    // Disable the selected letter’s onscreen keyboard button
+    btnClicked.disabled = true;
+    // Get letter
+    const letter = btnClicked.textContent;
+    // If the phrase includes the guessed letter
+    if (this.activePhrase.checkLetter(letter)) {
+      btnClicked.classList.add("chosen");
+      this.activePhrase.showMatchedLetter(letter);
+      // If the player has won the game
+      if (this.checkForWin()) {
+        this.gameOver();
+      }
+    } else {
+      // Phrase does not include the guessed letter
+      btnClicked.classList.add("wrong");
+      this.removeLife();
+    }
+  }
 }
