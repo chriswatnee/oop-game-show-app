@@ -72,4 +72,22 @@ class Game {
     // Return if there are no hidden letters
     return hiddenLetters.length === 0;
   }
+
+  // Ends the game
+  gameOver() {
+    // DOM element selections
+    const overlayDiv = document.querySelector("#overlay");
+    const gameOverMessageH1 = document.querySelector("#game-over-message");
+    // Display the start screen overlay and remove start class
+    overlayDiv.style.display = "flex";
+    overlayDiv.classList.remove("start");
+    // Update the overlay h1 element with a win or loss message and adds a win/lose class to the overlay
+    if (checkForWin()) {
+      gameOverMessageH1.textContent = "Congratulations, you won!";
+      overlayDiv.classList.add("win");
+    } else {
+      gameOverMessageH1.textContent = "Better luck next time!";
+      overlayDiv.classList.add("lose");
+    }
+  }
 }
