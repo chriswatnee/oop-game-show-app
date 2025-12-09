@@ -64,4 +64,12 @@ class Game {
       this.gameOver();
     }
   }
+
+  // Checks to see if the player has revealed all of the letters in the active phrase
+  checkForWin() {
+    // Get lis with the class hide
+    const hiddenLetters = document.querySelectorAll("#phrase .hide");
+    // Return if there are no hidden letters
+    return hiddenLetters.length === 0;
+  }
 }
